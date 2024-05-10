@@ -3,7 +3,7 @@
     $: t = Array(size).fill(0).map(() => Array(size).fill(0).map(() => " "))
 </script>
 <h1>Amőba</h1>
-<input type="range" bind:value={ size } min = 5 max = 15>
+<input type = "range" bind:value = { size } min = 5 max = 15>
 {#if !nyert}
     <table>
     {#each t as row, y}
