@@ -12,12 +12,12 @@
                 <td on:click={() => {               
                     cell = next = next == "X" ? "O" : "X";
                     [[1, 0], [0, 1], [1, 1], [1, -1]].forEach(ir => {
-                        var n = 0, xp = x, yp = y
-                        do n++, xp += ir[0], yp += ir[1]
-                        while(yp < size && yp >= 0 && t[yp][xp] == next)
+                        var n = 0, xp = x, yp = y, [ix, iy] = ir
+                        do n++, xp += ix, yp += iy
+                        while(t[yp] && t[yp][xp] == next)
                         xp = x, yp = y
-                        do n++, xp -= ir[0], yp -= ir[1]
-                        while(yp < size && yp >= 0 && t[yp][xp] == next)
+                        do n++, xp -= ix, yp -= iy
+                        while(t[yp] && t[yp][xp] == next)
                         if (n > 5) nyert = true
                     })
                 }} class={ cell }>{ cell }</td>
