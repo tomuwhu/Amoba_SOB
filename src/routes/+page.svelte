@@ -1,9 +1,7 @@
 <script>
     var size = 5
     var nyert = false
-    $: t = Array(size).fill(0).map((v, i) => 
-        Array(size).fill(0).map((v, i) => " ")
-    )
+    $: t = Array(size).fill(0).map(() => Array(size).fill(0).map(() => " "))
     var next = "X"
 </script>
 <h1>Amőba</h1>
@@ -16,19 +14,12 @@
             <td on:click={() => {               
                 cell = next = next == "X" ? "O" : "X";
                 [[1, 0], [0, 1], [1, 1], [1, -1]].forEach(ir => {
-                    var n = 0, xp=x, yp=y
-                    do {
-                        n++
-                        xp += ir[0]
-                        yp += ir[1]
-                    } while(yp<size && yp>=0 && t[yp][xp]==next)
-                    var xp=x, yp=y
-                    do {
-                        n++
-                        xp -= ir[0]
-                        yp -= ir[1]
-                    } while(yp<size && yp>=0 && t[yp][xp]==next)
-                    console.log(ir, n);
+                    var n = 0, xp = x, yp = y
+                    do n++, xp += ir[0], yp += ir[1]
+                    while(yp<size && yp>=0 && t[yp][xp]==next)
+                    xp = x, yp = y
+                    do n++, xp -= ir[0], yp -= ir[1]
+                    while(yp<size && yp>=0 && t[yp][xp]==next)
                     if (n > 5) nyert = true
                 })
             }} class={cell}>{cell}</td>
@@ -40,9 +31,7 @@
 <div>NYERT <table><tr><td class={next}>{next}</td></tr></table>!!!</div>
 <hr>
 <button on:click={() => {
-    t = Array(size).fill(0).map((v, i) => 
-            Array(size).fill(0).map((v, i) => " ")
-        )
+    t = Array(size).fill(0).map(() => Array(size).fill(0).map(() => " "))
     nyert = false
 }}>Új játék</button>
 {/if}
