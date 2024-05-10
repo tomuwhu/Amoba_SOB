@@ -1,6 +1,7 @@
 <script>
     var size = 5, nyert = false, next = "X"
-    $: t = Array(size).fill(0).map(() => Array(size).fill(0).map(() => " "))
+    $: t = !nyert &&
+    Array(size).fill(0).map(() => Array(size).fill(0).map(() => " "))
 </script>
 <h1>Amőba</h1>
 <input type="range" bind:value={ size } min=5 max=15>
@@ -33,5 +34,5 @@
     </table>
     </div>
     <hr>
-    <button on:click={() => (size++, nyert = false)}>Új játék</button>
+    <button on:click={() => nyert = false}>Új játék</button>
 {/if}
