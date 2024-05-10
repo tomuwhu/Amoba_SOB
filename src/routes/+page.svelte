@@ -1,7 +1,7 @@
 <script>
     var size = 5, nyert = false, next = "X"
     $: t = !nyert &&
-    Array(size).fill(0).map(() => Array(size).fill(0).map(() => " "))
+    Array(size).fill().map(() => Array(size).fill().map(() => " "))
 </script>
 <h1>Amőba</h1>
 <input type="range" bind:value={ size } min=5 max=15>
