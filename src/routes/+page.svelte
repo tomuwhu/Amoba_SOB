@@ -5,7 +5,7 @@
     var next = "X"
 </script>
 <h1>Amőba</h1>
-<input type="range" bind:value={size} min=5 max=12>
+<input type="range" bind:value={ size } min = 5 max = 12>
 {#if !nyert}
 <table>
 {#each t as row, y}
@@ -16,19 +16,24 @@
                 [[1, 0], [0, 1], [1, 1], [1, -1]].forEach(ir => {
                     var n = 0, xp = x, yp = y
                     do n++, xp += ir[0], yp += ir[1]
-                    while(yp<size && yp>=0 && t[yp][xp]==next)
+                    while(yp < size && yp >= 0 && t[yp][xp] == next)
                     xp = x, yp = y
                     do n++, xp -= ir[0], yp -= ir[1]
-                    while(yp<size && yp>=0 && t[yp][xp]==next)
+                    while(yp < size && yp >= 0 && t[yp][xp] == next)
                     if (n > 5) nyert = true
                 })
-            }} class={cell}>{cell}</td>
+            }} class={ cell }>{ cell }</td>
         {/each}
     </tr>
 {/each}
 </table>
 {:else}
-<div>NYERT <table><tr><td class={next}>{next}</td></tr></table>!!!</div>
+<div>
+<table>
+    <tr><th>NYERT</th></tr>
+    <tr><td class={ next }>{ next }</td></tr>
+</table>
+</div>
 <hr>
 <button on:click={() => {
     t = Array(size).fill(0).map(() => Array(size).fill(0).map(() => " "))
