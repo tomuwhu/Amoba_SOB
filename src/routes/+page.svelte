@@ -1,11 +1,11 @@
 <script>
-    var size = 5, nyert = false, next = "X"
-    $: t = !nyert &&
+    var size = 5, win = false, next = "X"
+    $: t = !win &&
     Array(size).fill().map(() => Array(size).fill().map(() => " "))
 </script>
 <h1>Amőba</h1>
 <input type="range" bind:value={ size } min=5 max=15>
-{#if !nyert}
+{#if !win}
     <table>
     {#each t as row, y}
         <tr>
@@ -19,7 +19,7 @@
                         xp = x, yp = y
                         do n++, xp -= ix, yp -= iy
                         while(t[yp] && t[yp][xp] == next)
-                        if (n > 5) nyert = true
+                        if (n > 5) win = true
                     })
                 }} class={ cell }>{ cell }</td>
             {/each}
@@ -29,10 +29,10 @@
 {:else}
     <div>
     <table>
-        <tr><th>NYERT</th></tr>
+        <tr><th>win</th></tr>
         <tr><td class={ next }>{ next }</td></tr>
     </table>
     </div>
     <hr>
-    <button on:click={() => nyert = false}>Új játék</button>
+    <button on:click={() => win = false}>Új játék</button>
 {/if}
