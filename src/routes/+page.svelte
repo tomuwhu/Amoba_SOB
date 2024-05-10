@@ -14,8 +14,8 @@
                     cell = next = next == "X" ? "O" : "X";
                     [[1, 0], [0, 1], [1, 1], [1, -1]].forEach(ir => {
                         var n = 0, xp = x, yp = y, [ix, iy] = ir
-                        do n++, xp += ix, yp += iy
-                        while(t[yp] && t[yp][xp] == next)
+                        do n++, xp += ix, yp += iy 
+                        while(t[yp] && t[yp][xp] == next) 
                         xp = x, yp = y
                         do n++, xp -= ix, yp -= iy
                         while(t[yp] && t[yp][xp] == next)
