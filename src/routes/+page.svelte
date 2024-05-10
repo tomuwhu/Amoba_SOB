@@ -1,11 +1,9 @@
 <script>
-    var size = 5
-    var nyert = false
+    var size = 5, nyert = false, next = "X"
     $: t = Array(size).fill(0).map(() => Array(size).fill(0).map(() => " "))
-    var next = "X"
 </script>
 <h1>Amőba</h1>
-<input type="range" bind:value={ size } min = 5 max = 12>
+<input type="range" bind:value={ size } min = 5 max = 15>
 {#if !nyert}
 <table>
 {#each t as row, y}
@@ -35,8 +33,5 @@
 </table>
 </div>
 <hr>
-<button on:click={() => {
-    t = Array(size).fill(0).map(() => Array(size).fill(0).map(() => " "))
-    nyert = false
-}}>Új játék</button>
+<button on:click={() => (size++, size--, nyert = false)}>Új játék</button>
 {/if}
