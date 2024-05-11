@@ -1,5 +1,5 @@
 <script>
-    var size = 12, win = false, OX = "X"
+    var size = 12, win = !1, OX = "X"
     $: t = !win &&
     Array(size).fill().map(() => Array(size).fill().map(() => " "))
     const O = X => X == "O" ? "X" : "O"
@@ -19,13 +19,13 @@
                 <td on:click={() => {               
                     cell = OX = O(OX),
                     [[1, 0], [0, 1], [1, 1], [1, -1]].forEach(ir => {
-                        var n = 0, xp = x, yp = y, [ix, iy] = ir
+                        let n = 0, xp = x, yp = y, [ix, iy] = ir
                         do n++, xp += ix, yp += iy 
                         while(t[yp] && t[yp][xp] == OX) 
                         xp = x, yp = y
                         do n++, xp -= ix, yp -= iy
                         while(t[yp] && t[yp][xp] == OX)
-                        if (n > 5) win = true
+                        win = n > 5 ? !0 : win
                     })
                 }} class={ cell }>{ cell }</td>
             {/each}
@@ -40,5 +40,5 @@
     </table>
     </div>
     <hr>
-    <button on:click={() => win = false}>Új játék</button>
+    <button on:click={() => win = !1}>Új játék</button>
 {/if}
