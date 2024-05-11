@@ -1,5 +1,5 @@
 <script>
-    var size = 12, win = false, next = "X"
+    var size = 12, win = false, OX = "X"
     $: t = !win &&
     Array(size).fill().map(() => Array(size).fill().map(() => " "))
     const O = X => X == "O" ? "X" : "O"
@@ -9,7 +9,7 @@
 {#if !win}
     <table>
         <tr><th>Következik:</th></tr>
-        <tr><td class={ O(next) }>{ O(next) }</td></tr>
+        <tr><td class={ O(OX) }>{ O(OX) }</td></tr>
     </table>
     <hr>
     <table>
@@ -17,14 +17,14 @@
         <tr>
             {#each row as cell, x}
                 <td on:click={() => {               
-                    cell = next = O(next),
+                    cell = OX = O(OX),
                     [[1, 0], [0, 1], [1, 1], [1, -1]].forEach(ir => {
                         var n = 0, xp = x, yp = y, [ix, iy] = ir
                         do n++, xp += ix, yp += iy 
-                        while(t[yp] && t[yp][xp] == next) 
+                        while(t[yp] && t[yp][xp] == OX) 
                         xp = x, yp = y
                         do n++, xp -= ix, yp -= iy
-                        while(t[yp] && t[yp][xp] == next)
+                        while(t[yp] && t[yp][xp] == OX)
                         if (n > 5) win = true
                     })
                 }} class={ cell }>{ cell }</td>
@@ -36,7 +36,7 @@
     <div>
     <table>
         <tr><th>Nyert:</th></tr>
-        <tr><td class={ next }>{ next }</td></tr>
+        <tr><td class={ OX }>{ OX }</td></tr>
     </table>
     </div>
     <hr>
