@@ -1,5 +1,5 @@
 <script>
-    var size = 5, win = false, next = "X"
+    var size = 12, win = false, next = "X"
     $: t = !win &&
     Array(size).fill().map(() => Array(size).fill().map(() => " "))
 </script>
@@ -29,7 +29,7 @@
 {:else}
     <div>
     <table>
-        <tr><th>win</th></tr>
+        <tr><th>Nyert:</th></tr>
         <tr><td class={ next }>{ next }</td></tr>
     </table>
     </div>
