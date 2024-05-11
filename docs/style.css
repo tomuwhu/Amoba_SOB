@@ -26,6 +26,10 @@ td.X {
 td.O {
     background-color: chocolate;
 }
+th {
+    color: rgb(41, 84, 127);
+    text-shadow: 1px 1px 3px gray;
+}
 h1 {
     padding: 0px;
     margin-block-start: 0px;
