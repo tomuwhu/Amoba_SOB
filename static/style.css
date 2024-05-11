@@ -35,4 +35,14 @@ h1 {
 }
 button {
     cursor: pointer;
+    text-align: center;
+    border-radius: 7px;
+    box-shadow: 1px 1px 3px black;
+    text-shadow: 1px 1px 3px gray;
+    background-color: bisque;
+    color: rgb(59, 14, 14);
+    padding: 9px;
+}
+button:hover {
+    background-color: rgb(155, 155, 49);
 }
