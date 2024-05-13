@@ -11,7 +11,9 @@
     setInterval(() => {
         if (ifr.style) {
             ifr.style.height = '1px'
+            ifr.style.width = '500px'
             ifr.style.height = ifr.contentWindow.document.documentElement.scrollHeight + 'px'
+            ifr.style.width = ifr.contentWindow.document.documentElement.scrollWidth + 'px'
         }
     }, 500)
 </script>
@@ -38,7 +40,7 @@
     iframe {
         margin: auto;
         border-radius: 10px;
-        border: solid 8px black;
+        border: solid 8px rgb(28, 76, 88);
         box-shadow: 1px 1px 4px black;
         display: block;
         width: 96%;
