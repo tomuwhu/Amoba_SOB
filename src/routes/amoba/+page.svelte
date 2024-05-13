@@ -42,3 +42,8 @@
     <hr>
     <button on:click={() => win = !1}>Új játék</button>
 {/if}
+<style>
+    input {
+        width: 300px;
+    }
+</style>
