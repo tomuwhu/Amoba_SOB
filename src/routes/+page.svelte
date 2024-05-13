@@ -10,28 +10,37 @@
 </script>
 <h1>Menü - Dávid óráján vendégségben</h1>
 <hr>
-<div class="pv">Példaprogram választása:</div>
-<select bind:value={link}>
-   {#each menu as m}
-    {#if link == m.link}
-        <option selected value={m.link}>{m.name}</option>
-    {:else}
-        <option value={m.link}>{m.name}</option>
-    {/if}
-   {/each}
-</select>
-<a href="{base}/{link}" target="_blank">Megynyit: {name}</a>
+<div class="c">
+    <div class="pv">Példaprogram választása:</div>
+    <select bind:value={link}>
+    {#each menu as m}
+        {#if link == m.link}
+            <option selected value={m.link}>{m.name}</option>
+        {:else}
+            <option value={m.link}>{m.name}</option>
+        {/if}
+    {/each}
+    </select>
+    <a href="{base}/{link}" target="_blank">Megynyit: {name}</a>
+</div>
 <hr>
 <div class="ss">Dr. Németh Tamás</div>
 <style>
+    div.c {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center
+    }
     a { 
         all: unset;
         cursor: pointer;
+        white-space: nowrap;
     }
     a, select, div.pv {
         border: solid 1px black;
         border-radius: 5px;
         padding: 5px;
+        margin: 5px;
     }
     div.pv {
         color: brown;
