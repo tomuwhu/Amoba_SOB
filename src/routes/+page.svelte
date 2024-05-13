@@ -1,44 +1,60 @@
 <script>
-    var size = 12, win = !1, OX = "X"
-    $: t = !win &&
-    Array(size).fill().map(() => Array(size).fill().map(() => " "))
-    const O = X => X == "O" ? "X" : "O"
+    import {base} from "$app/paths";
+    var link = "amoba"
+    $: name = menu.filter(m => m.link == link)[0].name
+    const menu = [
+        {link: "amoba", name: "Amőba"},
+        {link: "date_input", name: "Dátum input"},
+        {link: "grid", name: "CSS GRID példa"}
+    ]
 </script>
-<h1>Amőba</h1>
-<input type="range" bind:value={ size } min=5 max=15>
-{#if !win}
-    <table>
-        <tr><th>Következik:</th></tr>
-        <tr><td class={ O(OX) }>{ O(OX) }</td></tr>
-    </table>
-    <hr>
-    <table>
-    {#each t as row, y}
-        <tr>
-            {#each row as cell, x}
-                <td on:click={() => {               
-                    cell = OX = O(OX),
-                    [[1, 0], [0, 1], [1, 1], [1, -1]].forEach(ir => {
-                        let n = 0, xp = x, yp = y, [ix, iy] = ir
-                        do n++, xp += ix, yp += iy 
-                        while(t[yp] && t[yp][xp] == OX) 
-                        xp = x, yp = y
-                        do n++, xp -= ix, yp -= iy
-                        while(t[yp] && t[yp][xp] == OX)
-                        win = n > 5 ? !0 : win
-                    })
-                }} class={ cell }>{ cell }</td>
-            {/each}
-        </tr>
-    {/each}
-    </table>
-{:else}
-    <div>
-    <table>
-        <tr><th>Nyert:</th></tr>
-        <tr><td class={ OX }>{ OX }</td></tr>
-    </table>
-    </div>
-    <hr>
-    <button on:click={() => win = !1}>Új játék</button>
-{/if}
+<h1>Menü - Dávid óráján vendégségben</h1>
+<hr>
+<div class="pv">Példaprogram választása:</div>
+<select bind:value={link}>
+   {#each menu as m}
+    {#if link == m.link}
+        <option selected value={m.link}>{m.name}</option>
+    {:else}
+        <option value={m.link}>{m.name}</option>
+    {/if}
+   {/each}
+</select>
+<a href="{base}/{link}" target="_blank">Megynyit: {name}</a>
+<hr>
+<div class="ss">Dr. Németh Tamás</div>
+<style>
+    a { 
+        all: unset;
+        cursor: pointer;
+    }
+    a, select, div.pv {
+        border: solid 1px black;
+        border-radius: 5px;
+        padding: 5px;
+    }
+    div.pv {
+        color: brown;
+        background-color: rgb(234, 212, 184);
+        display: inline-block;
+        border: solid 1px rgb(121, 76, 76);
+        box-shadow: 1px 1px 3px inset gray;
+    }
+    div.ss {
+        color: rgb(161, 128, 86);
+        text-shadow: 1px 1px 4px gray;
+    }
+    a {
+        background-color: aquamarine;
+        box-shadow: 1px 1px 3px black;
+    }
+    select {
+        background-color: burlywood;
+    }
+    a:hover {
+        background-color: rgb(245, 186, 118);
+    }
+    :global(body) {
+        background-color: blanchedalmond;
+    }
+</style>
