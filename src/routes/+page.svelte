@@ -9,7 +9,7 @@
     ]
     var ifr = {}
     setInterval(() => {
-        if (ifr.style) {
+        if (ifr &&ifr.style) {
             ifr.style.height = '1px'
             ifr.style.width = '500px'
             ifr.style.height = ifr.contentWindow.document.documentElement.scrollHeight + 'px'
