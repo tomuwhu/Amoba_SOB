@@ -1,5 +1,4 @@
 <script>
-    import {base} from "$app/paths";
     const d0 = new Date()
     var d1 = d0.toISOString().split('T')[0], d2 = d1
     d0.setDate(d0.getDate() + 1)
