@@ -7,10 +7,8 @@
     $: sub = (new Date(d2) - new Date(d1)) / (24 * 60 * 60 * 1000)
     $: ev = (sub/365.2501).toFixed(2)
 </script>
-
-<a href="{base}/">Amőba</a>
-<hr>
-<h3>Dátum input</h3>
+<h1>Dátum input</h1>
+<br><hr>
 <input type="date" bind:value={d1}>
 <br><br>
 {d1.split("-").join(". ")}.
