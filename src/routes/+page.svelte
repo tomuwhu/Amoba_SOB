@@ -7,6 +7,13 @@
         {link: "date_input", name: "Dátum input"},
         {link: "grid", name: "CSS GRID példa"}
     ]
+    var ifr = {}
+    setInterval(() => {
+        if (ifr.style) {
+            ifr.style.height = '1px'
+            ifr.style.height = ifr.contentWindow.document.documentElement.scrollHeight + 'px'
+        }
+    }, 500)
 </script>
 <h1>Menü - Dávid óráján vendégségben</h1>
 <hr>
@@ -21,11 +28,22 @@
         {/if}
     {/each}
     </select>
-    <a href="{base}/{link}" target="_blank">Megynyit: {name}</a>
+    <a href="{base}/{link}" target="_blank">{name} megynyitása új lapon</a>
 </div>
 <hr>
+<iframe bind:this={ifr} title="cc" class="cc" src="{base}/{link}" scrolling="no"></iframe>
+<br>
 <div class="ss">Dr. Németh Tamás</div>
 <style>
+    iframe {
+        margin: auto;
+        border-radius: 10px;
+        border: solid 8px black;
+        box-shadow: 1px 1px 4px black;
+        display: block;
+        width: 96%;
+        height: 90%;
+    }
     div.c {
         display: flex;
         flex-wrap: wrap;
