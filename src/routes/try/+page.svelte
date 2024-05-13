@@ -5,6 +5,7 @@
     d0.setDate(d0.getDate() + 1)
     var d2 = d0.toISOString().split('T')[0]
     $: sub = (new Date(d2) - new Date(d1)) / (24 * 60 * 60 * 1000)
+    $: ev = (sub/365.2501).toFixed(2)
 </script>
 
 <a href="{base}/">Amőba</a>
@@ -19,4 +20,4 @@
 {d2.split("-").join(". ")}.
 <hr>
 {sub} nap a különbség
-(kb. {(sub/365.2501).toFixed(2)} év)
+{#if ev >= 0.01} (kb. {ev} év){/if}
