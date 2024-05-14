@@ -4,6 +4,7 @@
 <h1>Grid Példa</h1>
 <hr>
 <input type="range" bind:value={n} min=10 max=121>
+<hr>
 <div class="c">
     {#each Array(n).fill() as i, j}
         <div on:click={e => e.target.style.visibility = 'hidden'}>{j + 1}</div>
