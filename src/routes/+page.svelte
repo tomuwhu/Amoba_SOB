@@ -5,7 +5,8 @@
     const menu = [
         {link: "amoba", name: "Amőba"},
         {link: "date_input", name: "Dátum input"},
-        {link: "grid", name: "CSS GRID példa"}
+        {link: "grid", name: "CSS GRID példa"},
+        {link: "form", name: "Form példa"}
     ]
     var ifr = {}
     setInterval(() => {
