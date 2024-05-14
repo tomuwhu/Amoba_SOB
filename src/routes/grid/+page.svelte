@@ -1,7 +1,11 @@
+<script>
+    var n = 42;
+</script>
 <h1>Grid Példa</h1>
 <hr>
+<input type="range" bind:value={n} min=10 max=121>
 <div class="c">
-    {#each Array(100).fill() as i, j}
+    {#each Array(n).fill() as i, j}
         <div on:click={e => e.target.style.visibility = 'hidden'}>{j + 1}</div>
     {/each}
 </div>
