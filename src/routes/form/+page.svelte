@@ -2,11 +2,17 @@
 	import { onMount } from "svelte";
     var form, fd = new FormData(form)
     const reg = () => fd = new FormData(form)
+    const send = () => {
+        fd = new FormData(form)
+        var o = {}
+        fd.forEach((v, k) => o[k] = v)
+        console.log(o)
+    }
     onMount(reg)
 </script>
 <h1>Regisztráció</h1>
 <hr>
-<form bind:this={form} on:submit={() => reg("submit")} on:change={() => reg("change")}>
+<form bind:this={form} on:submit={send} on:change={reg}>
     <label for="username">Felhasználónév</label>
     <input type="text" name="username">
     <br>
