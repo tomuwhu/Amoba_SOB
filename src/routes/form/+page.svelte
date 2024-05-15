@@ -1,11 +1,13 @@
 <script>
 	import { onMount } from "svelte";
+    import sha256 from 'crypto-js/sha256'
     var form, fd = new FormData(form)
     const reg = () => fd = new FormData(form)
     const send = () => {
         fd = new FormData(form)
         var o = {}
         fd.forEach((v, k) => o[k] = v)
+        o.password = sha256(o.password).toString()
         console.log(o)
     }
     onMount(reg)
@@ -19,12 +21,6 @@
     <label for="username">Név</label>
     <input type="text" name="name">
     <br>
-    <label for="c1">Háttérszín</label>
-    <input type="color" name="c1">
-    <br>
-    <label for="c2">Betűszín</label>
-    <input type="color" name="c2" value="#fef2f0">
-    <br>
     <label for="date_of_birth">Születési dátum</label>
     <input type="date" name="date_of_birth">
     <br>
@@ -34,16 +30,11 @@
     <input type="submit" value="Elküld">
 </form>
 <hr>
+<br>
 <div class="fdc">
 {#each fd as x}
     <div class="g1">{x[0]}:</div>
-    {#if x[0]=="name"}
-    <div class="g2" 
-    style="background-color: {fd.get('c1')}; color: {fd.get('c2')};"
-    >{x[1]}</div>
-    {:else}
     <div class="g2">{x[1]}</div>
-    {/if}
 {/each}
 </div>
 <style>
