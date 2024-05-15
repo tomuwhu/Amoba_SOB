@@ -19,10 +19,10 @@
     <label for="username">Név</label>
     <input type="text" name="name">
     <br>
-    <label for="c1">Betűszín</label>
+    <label for="c1">Háttérszín</label>
     <input type="color" name="c1">
     <br>
-    <label for="c2">Háttérszín</label>
+    <label for="c2">Betűszín</label>
     <input type="color" name="c2" value="#fef2f0">
     <br>
     <label for="date_of_birth">Születési dátum</label>
