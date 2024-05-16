@@ -89,6 +89,7 @@
         padding: 6px;
         border-radius: 10px;
         box-shadow: 1px 1px 3px black;
+        white-space: nowrap;
     }
     .g1 {
         text-align: right;
