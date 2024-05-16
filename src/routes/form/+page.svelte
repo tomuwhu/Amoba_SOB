@@ -14,7 +14,8 @@
 </script>
 <h1>Regisztráció</h1>
 <hr>
-<form bind:this={form} on:submit={send} on:change={reg}>
+<form bind:this={form} on:submit={send} on:change={reg}
+    action="javascript:void(0)">
     <label for="username">Felhasználónév</label>
     <input type="text" name="username">
     <br>
